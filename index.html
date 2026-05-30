@@ -1,36 +1,234 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-<title>11239123</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Портфолио gibsy — разработчик и дизайнер. Telegram, GitHub, VK, Instagram.">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="gibsy — портфолио">
+    <meta property="og:description" content="Личная страница gibsy. Проекты, соцсети и контакты.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gibsy.qd.je">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="gibsy — портфолио">
+    <meta name="twitter:description" content="Личная страница gibsy. Проекты, соцсети и контакты.">
+    <title>gibsy — портфолио</title>
+    <link rel="canonical" href="https://gibsy.qd.je">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --clr-bg: #11100f;
+            --clr-surface: #1e1713;
+            --clr-text: #f2f2f2;
+            --clr-muted: #666461;
+            --clr-accent: #e25822;
+        }
 
-<style>
-body{
-    font-family: monospace;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-}
-</style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
+        body {
+            background-color: var(--clr-bg);
+            background: radial-gradient(circle at 80% 20%, var(--clr-surface) 0%, var(--clr-bg) 100%);
+            color: var(--clr-text);
+            font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .site-wrapper {
+            width: 100%;
+            max-width: 820px;
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 50px;
+            align-items: center;
+            position: relative;
+        }
+
+        .bg-watermark {
+            position: absolute;
+            bottom: 100%;
+            left: -30px;
+            margin-bottom: -10px;
+            font-size: 8.7rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.02);
+            letter-spacing: -0.05em;
+            pointer-events: none;
+            white-space: nowrap;
+            line-height: 0.8;
+            user-select: none;
+        }
+
+        .avatar {
+            width: 100%;
+            aspect-ratio: 1;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: grayscale(100%) contrast(110%);
+            transition: filter 0.5s ease-out;
+        }
+
+        .avatar:hover img {
+            filter: grayscale(0%) contrast(100%);
+        }
+
+        .profile {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .profile__name {
+            font-size: 4rem;
+            font-weight: 100;
+            color: #fff;
+            letter-spacing: -0.04em;
+            line-height: 0.9;
+            margin-bottom: 22px;
+            text-transform: lowercase;
+        }
+
+        .profile__name strong {
+            font-weight: 600;
+        }
+
+        .profile__bio {
+            font-size: 1.05rem;
+            line-height: 1.65;
+            color: rgba(242, 242, 242, 0.8);
+            margin-bottom: 35px;
+            max-width: 460px;
+            font-weight: 300;
+        }
+
+        .social__label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--clr-muted);
+            margin-bottom: 20px;
+        }
+
+        .social__list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            align-items: center;
+            list-style: none;
+        }
+
+        .social__link {
+            color: var(--clr-muted);
+            font-size: 1.8rem;
+            text-decoration: none;
+            transition: transform 0.2s ease, color 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social__link:hover { transform: scale(1.15); }
+        .social__link:focus-visible { outline: 2px solid var(--clr-accent); outline-offset: 4px; border-radius: 4px; }
+        .social__link:hover .fa-telegram  { color: #34aed3; }
+        .social__link:hover .fa-github    { color: #fff; }
+        .social__link:hover .fa-vk        { color: #4a76a8; }
+        .social__link:hover .fa-instagram { color: var(--clr-accent); }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 80px 24px 48px;
+                align-items: flex-start;
+            }
+
+            .site-wrapper {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .bg-watermark {
+                font-size: 2.8rem;
+                left: 0;
+                margin-bottom: 12px;
+            }
+
+            .avatar {
+                width: 160px;
+                height: 160px;
+                aspect-ratio: unset;
+                margin-bottom: 24px;
+            }
+
+            .profile__name {
+                font-size: 3rem;
+                margin-bottom: 16px;
+            }
+
+            .profile__bio {
+                font-size: 0.95rem;
+                margin-bottom: 28px;
+                max-width: 100%;
+            }
+
+            .social__list {
+                gap: 24px;
+            }
+
+            .social__link {
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .avatar img, .social__link { transition: none; }
+        }
+    </style>
 </head>
 <body>
 
-<div id="js-warning">
-    disable JavaScript first
-</div>
+    <div class="site-wrapper">
 
-<noscript>
-    <style>
-        #js-warning{
-            display:none;
-        }
-    </style>
+        <p class="bg-watermark" aria-hidden="true">gibsy.qd.je</p>
 
-    <div>
-        TEST
+        <figure class="avatar">
+            <img src="bigSH.png" alt="Аватар gibsy" width="240" height="240">
+        </figure>
+
+        <article class="profile">
+            <h1 class="profile__name"><strong>gibsy</strong></h1>
+
+            <p class="profile__bio">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et tortor nulla. Nunc eu mauris et metus efficitur ultricies. Pellentesque molestie tempor massa, et tincidunt ante euismod id. Etiam aliquet sagittis libero sit amet viverra.
+            </p>
+
+            <nav aria-label="Социальные сети">
+                <p class="social__label">social media</p>
+                <ul class="social__list">
+                    <li><a href="https://t.me/username" target="_blank" rel="noopener noreferrer" class="social__link" aria-label="Telegram"><i class="fab fa-telegram" aria-hidden="true"></i></a></li>
+                    <li><a href="https://github.com/username" target="_blank" rel="noopener noreferrer" class="social__link" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a></li>
+                    <li><a href="https://vk.com/username" target="_blank" rel="noopener noreferrer" class="social__link" aria-label="ВКонтакте"><i class="fab fa-vk" aria-hidden="true"></i></a></li>
+                    <li><a href="https://instagram.com/username" target="_blank" rel="noopener noreferrer" class="social__link" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+                </ul>
+            </nav>
+        </article>
+
     </div>
-</noscript>
 
 </body>
 </html>
